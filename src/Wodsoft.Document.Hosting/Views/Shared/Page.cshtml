@@ -1,0 +1,17 @@
+﻿@model IReadOnlyCollection<IDocumentPage>
+@{
+    string path = ViewBag.Path;
+}
+<ul>
+    @foreach (var page in Model)
+    {
+        <li>
+            <a href="@Html.Raw(Url.Action("Index", new { path = path + page.Name }).Replace("%2F","/"))">@page.Name</a>
+            @if (page.Children.Count > 0)
+            {
+                ViewBag.Path = path + page.Name + "/";
+                @Html.Partial("Page", page.Children)
+            }
+        </li>
+    }
+</ul>

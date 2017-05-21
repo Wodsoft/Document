@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>Wodsoft.Document.Core</AssemblyName>
+    <RootNamespace>Wodsoft.Document</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wodsoft.Document.Abstract\Wodsoft.Document.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

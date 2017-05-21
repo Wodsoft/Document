@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8194B0D-5888-40D0-A1F0-802D1CF34B79}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document.Core", "src\Wodsoft.Document.Core\Wodsoft.Document.Core.csproj", "{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document.Github", "src\Wodsoft.Document.Github\Wodsoft.Document.Github.csproj", "{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document.Physical", "src\Wodsoft.Document.Physical\Wodsoft.Document.Physical.csproj", "{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document", "src\Wodsoft.Document\Wodsoft.Document.csproj", "{90C7C912-120B-4103-8B47-07EC644B0AB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wodsoft.Document.Abstract", "src\Wodsoft.Document.Abstract\Wodsoft.Document.Abstract.csproj", "{2F640090-E636-4FC4-A1ED-965C95831215}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wodsoft.Document.Hosting", "src\Wodsoft.Document.Hosting\Wodsoft.Document.Hosting.csproj", "{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document.UnitTest", "test\Wodsoft.Document.UnitTest\Wodsoft.Document.UnitTest.csproj", "{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DF3047E-352D-4A16-A25F-98E20E98683E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4CD99A3B-7C2A-466F-8956-DE4E9573B41D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wodsoft.Document.Markdown", "Wodsoft.Document.Markdown\Wodsoft.Document.Markdown.csproj", "{73A39F90-2397-46CA-9267-CF612F0B7A30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C7C912-120B-4103-8B47-07EC644B0AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C7C912-120B-4103-8B47-07EC644B0AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C7C912-120B-4103-8B47-07EC644B0AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C7C912-120B-4103-8B47-07EC644B0AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F640090-E636-4FC4-A1ED-965C95831215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F640090-E636-4FC4-A1ED-965C95831215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F640090-E636-4FC4-A1ED-965C95831215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F640090-E636-4FC4-A1ED-965C95831215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73A39F90-2397-46CA-9267-CF612F0B7A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73A39F90-2397-46CA-9267-CF612F0B7A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73A39F90-2397-46CA-9267-CF612F0B7A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73A39F90-2397-46CA-9267-CF612F0B7A30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{663AEB50-C919-4A9A-9B9B-EADD6C7EE68E} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{2092D42E-CCA3-4FF1-8EFE-B87EEFF4DF6B} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{A8FBBA3A-2DED-440D-AAD5-1CE9AEA1494F} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{90C7C912-120B-4103-8B47-07EC644B0AB8} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{2F640090-E636-4FC4-A1ED-965C95831215} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{1E2AD1B8-8A6A-4822-AB85-DC5BA5D0F2FB} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+		{D3A40B45-E3A3-4EEC-9D64-3E458AAE706D} = {4CD99A3B-7C2A-466F-8956-DE4E9573B41D}
+		{73A39F90-2397-46CA-9267-CF612F0B7A30} = {0DF3047E-352D-4A16-A25F-98E20E98683E}
+	EndGlobalSection
+EndGlobal
