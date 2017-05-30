@@ -32,6 +32,7 @@ namespace Wodsoft.Document.Hosting
             // Add framework services.
             services.AddMvc();
             services.AddSingleton<IDocumentProvider, DocumentProvider>(sp => new DocumentProvider(new PhysicalFileProvider("D:\\Docs\\ComBoost"), ""));
+            services.AddSingleton<DocumentManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +60,7 @@ namespace Wodsoft.Document.Hosting
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{lang}/{path=}",
+                    template: "{lang}/{*path}",
                     defaults: new { controller = "Doc", action = "Index" });
             });
         }

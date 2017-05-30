@@ -43,13 +43,12 @@ namespace Wodsoft.Document
             }
         }
 
-        public IDocumentContent GetContent(string path, IDocumentLanguage lang)
+        public IDocumentContent GetContent(string path, IDocumentLanguage lang, out IDocumentPage page)
         {
             if (!IsLoaded)
                 throw new InvalidOperationException("未加载内容。");
             if (lang == null)
                 throw new ArgumentNullException(nameof(lang));
-            IDocumentPage page;
             if (!string.IsNullOrEmpty(path))
             {
                 path = path.ToLower();

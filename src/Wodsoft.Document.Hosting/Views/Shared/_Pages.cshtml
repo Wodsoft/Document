@@ -1,0 +1,48 @@
+﻿@model IReadOnlyCollection<IDocumentPage>
+@{
+    string path = "";
+    int level = 0;
+    int back = 0;
+    IReadOnlyCollection<IDocumentPage> current = Model;
+    Stack<IDocumentPage> items = new Stack<IDocumentPage>();
+    Stack<string> paths = new Stack<string>();
+    Stack<int> backs = new Stack<int>();
+    foreach (var item in Model.Reverse())
+    {
+        items.Push(item);
+    }
+}
+<nav class="nav flex-column nav-menu">
+    @while (items.Count > 0)
+    {
+        var page = items.Pop();
+        <div class="@(page.Children.Count > 0 ? " nav-parent" : "")@(ViewBag.CurrentPage == page ? " active" : "")" style="padding-left: @(level * 16)px;" data-level="@level">
+            <span style="width: 20px;"></span>
+            <a class="nav-link" href="@Html.Raw(Url.Action("Index", new { path = path + page.Name }).Replace("%2F", "/"))">
+                @page.Name
+            </a>
+        </div>
+        if (back > 0)
+        {
+            back--;
+            if (back == 0)
+            {
+                level--;
+                path = paths.Pop();
+                back = backs.Pop();
+            }
+        }
+        if (page.Children.Count > 0)
+        {
+            paths.Push(path);
+            backs.Push(back);
+            level++;
+            foreach (var item in page.Children.Reverse())
+            {
+                items.Push(item);
+            }
+            back = page.Children.Count;
+            path += page.Name + "/";
+        }
+    }
+</nav>

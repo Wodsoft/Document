@@ -1,0 +1,24 @@
+﻿@model IDocumentContent
+@{
+    Layout = null;
+}
+@if (Model == null)
+{
+    <h3>很抱歉，当前页面没有内容。</h3>
+}
+else
+{
+    <h2>@Model.Title</h2>
+    <p class="authors">
+        <span class="align-middle" title="@Model.EditDate.ToString("yyyy-MM-dd HH:mm:dd")">@Model.EditDate.ToString("yyyy-MM-dd")</span>
+        @foreach (var author in Model.Authors)
+        {
+            <a class="align-middle" href="@author.Link" title="@author.Name">
+                <img class="align-middle" src="@(author.Avatar ?? "/image/avatar.png")" />
+            </a>
+        }
+    </p>
+    <div id="pageContent">
+        @Html.Raw(new HeyRed.MarkdownSharp.Markdown().Transform(Model.Content))
+    </div>
+}

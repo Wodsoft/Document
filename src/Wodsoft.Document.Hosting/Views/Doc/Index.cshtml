@@ -2,25 +2,140 @@
 @{
     IReadOnlyCollection<IDocumentPage> pages = ViewBag.Pages;
 }
-<div class="d-flex justify-content-between">
-    <div class="p-2">
-        @Html.Partial("Page", pages)
+<div class="d-flex flex-row flex-wrap">
+    <div style="flex-basis: 280px;">
+        <div id="pages" class="p-2" style="bottom:0; overflow-y: auto; position: fixed; width: 280px; top: 56px;">
+            @Html.Partial("_Pages", pages)
+        </div>
     </div>
     <div class="p-2">
-        @if (Model == null)
-        {
-            <h3>很抱歉，当前页面没有内容。</h3>
-        }
-        else
-        {
-            <h2>@Model.Title</h2>
-            <p>
-                <span>@Model.EditDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
-            </p>
-            <p>
-                @Html.Raw(Model.Content)
-            </p>
-        }
+        <div id="content">
+            @Html.Partial("Page", Model)
+        </div>
     </div>
-    <div class="p-2">Flex item 3</div>
+    <div class="ml-auto p-2" style="flex-basis: 320px;">
+        <div class="d-flex flex-column" style="font-size: 14px;">
+            <div class="p-2">
+                <a href="#"><i class="fa fa-edit"></i> 编辑</a>
+            </div>
+            <div class="p-2">
+                <a href="#"><i class="fa fa-share"></i> 分享</a>
+            </div>
+            <div class="p-2">
+                Language
+                <select class="form-control form-control-sm">
+                    @foreach (IDocumentLanguage lang in ViewBag.Languages)
+                    {
+                        <option value="@lang.Value" @(lang == ViewBag.Language ? "selected=\"selected\"" : "")>@lang.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="p-1">
+                本文内容
+            </div>
+            <div id="index">
+            </div>
+        </div>
+    </div>
 </div>
+@section scripts{
+    <script type="text/javascript">
+        var contentDiv = $('#content');
+        var indexDiv = $('#index');
+        function initNode() {
+            indexDiv.html('');
+            $('#pageContent').find('h2').each(function (index, element) {
+                var text = $(element).text();
+                var id = text.replace(' ', '-');
+                element.id = id;
+                indexDiv.append('<div class="p-1"><a href="#' + id + '">' + text + '</a></div>');
+            });
+        }
+        $('nav.nav-menu').find('.active').each(function (index, element) {
+            element = $(element);
+            var level = element.data('level');
+            var prev = element.prev();
+            while (prev.data('level') <= level) {
+                if (prev.hasClass('nav-parent')) {
+                    prev.addClass('open');
+                    level--;
+                    if (level == 0)
+                        break;
+                }
+                prev = prev.prev();
+            }
+        });
+        $('nav.nav-menu').find('.nav-parent').each(function (index, element) {
+            element = $(element);
+            var icon = element.find('span');
+            var level = element.data('level');
+            icon.click(function () {
+                var open = element.hasClass('open');
+                var next = element.next();
+                while (next.data('level') == level + 1) {
+                    if (open)
+                        next.hide();
+                    else
+                        next.show();
+                    next = next.next();
+                }
+                if (open)
+                    element.removeClass('open');
+                else
+                    element.addClass('open');
+
+            });
+            if (element.hasClass('open')) {
+
+            }
+            else {
+                var next = element.next();
+                while (next.data('level') > level) {
+                    next.hide();
+                    next = next.next();
+                }
+            }
+        });
+        $('nav.nav-menu').find('a').each(function (index, element) {
+            var a = $(element);
+            var href = a.attr('href');
+            a.data('href', href);
+            a.click(function (e) {
+                $.ajax({
+                    url: href,
+                    data: {
+                        act : 'page'
+                    },
+                    success: function (html) {
+                        window.history.pushState({
+                            content: contentDiv.html(),
+                            page: $('nav.nav-menu').find('.active').find('a').attr('href')
+                        }, 0, '@(Context.Request.Scheme + "://" + Context.Request.Host)' + href);
+                        contentDiv.html(html);
+                        $('nav.nav-menu').find('div').removeClass('active');
+                        a.parent().addClass('active');
+                        initNode();
+                    },
+                    complete: function () {
+                    },
+                    error: function (xhr) {
+                        $('#content').html('<h3>加载失败。</h3>');
+                    }
+                })
+                return false;
+            });
+        });
+
+        window.onscroll = function () {
+            $('#pages').css('top', window.scrollY < 56 ? (56-window.scrollY )+ 'px' : '0')
+        };
+
+        window.onpopstate = function () {
+            contentDiv.html(history.state.content);
+            $('nav.nav-menu').find('div').removeClass('active');
+            $('nav.nav-menu').find('a[href=' + history.state.page + ']').parent().addClass('active');
+        };
+
+        initNode();
+    </script>
+}
